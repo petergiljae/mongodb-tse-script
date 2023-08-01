@@ -20,13 +20,12 @@ try:
 
     for operation in in_progress_ops:
         command = operation.get('command', {})
-        namespace = operation.get('ns', {})
         if 'compact' in command:
             compact_in_progress = True
             # You can also check additional information about the compact operation here
             # For example, the 'ns' field contains the namespace (database.collection) being compacted.
-            # ns = operation.get('ns', '')
-            print(f"Compacting: {namespace}")
+            ns = operation.get('ns', '')
+            print(f"Compacting: {ns}")
             break
 
     if compact_in_progress:
