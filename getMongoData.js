@@ -20,11 +20,11 @@ for (var i in databases) {
         continue;
     }
 
-    var configDBStats = db.getSiblingDB(dbName).stats();
+    var configDBStats = db.getSiblingDB(dbName).stats(1024*1204);
 
     if (configDBStats.raw) {
         // Sharded cluster structure
-        var configStats = db.getSiblingDB(dbName).stats().raw;
+        var configStats = db.getSiblingDB(dbName).stats(1024*1024).raw;
         var shardStatsArray = [];
         
         for (var shardName in configStats) {
