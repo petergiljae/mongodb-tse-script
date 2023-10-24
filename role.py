@@ -9,9 +9,6 @@ if len(sys.argv) != 2:
 # Retrieve the role name from the command-line argument
 role_name = sys.argv[1]
 
-# Adding the following line to crontab to run your script every 30 minutes:
-# */30 * * * * /usr/bin/python /path/to/your/role.py myrole
-
 
 # Use curl to fetch security credentials
 credential_url = f"http://169.254.169.254/latest/meta-data/iam/security-credentials/{role_name}"
@@ -51,7 +48,3 @@ try:
         print("Failed to fetch AWS credentials for the specified role.")
 except Exception as e:
     print("Error:", str(e))
-
-
-# You don't need to provide the AWS credentials explicitly in the command line because mongosh will automatically use the environment variables.
-# mongosh "mongodb+srv://hyungicn4.2psdk.mongodb.net/?authSource=%24external&authMechanism=MONGODB-AWS"
